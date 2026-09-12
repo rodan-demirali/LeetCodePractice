@@ -18,7 +18,7 @@ public class Problem3414_MaximumScoreOfNonOverlappingIntervalsTests
             new List<int> { 6, 9, 3 },
             new List<int> { 6, 7, 1 },
             new List<int> { 8, 9, 1 }
-        };
+        }; 
 
         var solution = new Problem3414_MaximumScoreOfNonOverlappingIntervals();
 

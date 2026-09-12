@@ -57,7 +57,7 @@ namespace LeetCodePractice.Hard
             for (int k = 1; k <= 4; k++)
             {
                 dp[n, k] = new List<int>();
-            }
+            } 
 
             for (int i = n - 1; i >= 0; i--)
             {
