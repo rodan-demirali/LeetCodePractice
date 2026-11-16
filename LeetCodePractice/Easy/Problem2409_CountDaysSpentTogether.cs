@@ -9,49 +9,39 @@ namespace LeetCodePractice.Easy
 {
     public class Problem2409_CountDaysSpentTogether
     {
-        public static int CountDaysTogether(string arriveAlice, string leaveAlice, string arriveBob, string leaveBob)
+        public class TreeNode
         {
-            // StringBuilder sbm1 = new StringBuilder(arriveAlice);
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+            {
+                this.val = val;
+                this.left = left;
+                this.right = right;
+            }
+        }
 
-            //int monthaa = int.Parse(arriveAlice.Substring(0, 2)); //
-            //int dayaa = int.Parse(arriveAlice.Substring(3, 2)); //15
-            //int monthla = int.Parse(leaveAlice.Substring(0, 2)); //08
-            //int dayla = int.Parse(leaveAlice.Substring(3, 2)); //18
+        static int sum = 0;
+        public static TreeNode BstToGst(TreeNode root)
+        {
 
+            DFS(root);
 
-            //int monthab = int.Parse(arriveBob.Substring(0, 2)); //08
-            //int dayab = int.Parse(arriveBob.Substring(3, 2)); //16
-            //int monthlb = int.Parse(leaveBob.Substring(0, 2)); //08
-            //int daylb = int.Parse(leaveBob.Substring(3, 2)); //19
+            return root;
 
-            //if ((monthab == monthla && dayab > dayla) || (monthab > monthla) ) return 0;
+        }
 
-            //int together = dayla - dayab + 1;
+        public static void DFS(TreeNode node)
+        {
+            // if(node != null) DFS(node.right);
+            if (node == null) return;
+            DFS(node.right);
+            sum += node.val;
+            node.val = sum;
+            DFS(node.left);
+            // if(node.left != null) DFS(node.left)
 
-            int[] daysinmonth = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-            int[] daysinmonthsum = new int[] {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
-
-            int monthaa = int.Parse(arriveAlice.Substring(0, 2)); //
-            int dayaa = int.Parse(arriveAlice.Substring(3, 2)); //15
-            int monthla = int.Parse(leaveAlice.Substring(0, 2)); //08
-            int dayla = int.Parse(leaveAlice.Substring(3, 2)); //18
-
-            int monthab = int.Parse(arriveBob.Substring(0, 2)); //08
-            int dayab = int.Parse(arriveBob.Substring(3, 2)); //16
-            int monthlb = int.Parse(leaveBob.Substring(0, 2)); //08
-            int daylb = int.Parse(leaveBob.Substring(3, 2)); //19
-
-            int a1 = daysinmonthsum[monthaa - 1] + dayaa;
-            int a2 = daysinmonthsum[monthla - 1] + dayla;
-            int b1 = daysinmonthsum[monthab - 1] + dayab;
-            int b2 = daysinmonthsum[monthlb - 1] + daylb;
-
-            int start = Math.Max(a1, b1);
-            int end = Math.Min(a2, b2);
-            int together = Math.Max(0, end - start + 1);
-
-
-            return together;
 
         }
     }
